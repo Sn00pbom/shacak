@@ -1,4 +1,6 @@
 execute pathogen#infect()
+syntax on
+filetype plugin indent on
 
 set nocompatible
 
@@ -103,29 +105,12 @@ func! SymbolMap()
 endfu
 com! SymbolMap call SymbolMap()
 
-func! WordProcessorMode()
-  setlocal formatoptions=1
-  setlocal noexpandtab
-  map j gj
-  map k gk
-  setlocal spell spelllang=en_us
-  set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
-  set complete+=s
-  set formatprg=par
-  setlocal wrap
-  setlocal linebreak
-  setlocal showbreak=
-endfu
-com! WP call WordProcessorMode()
-
 " Color Scheme
 set termguicolors
 "colorscheme base16-circus
 colorscheme base16-atelier-lakeside
 "colorscheme quantum
 let g:colorscheme_switcher_exclude_builtins=1
-
-
 
 " Compat stuff:
 set encoding=utf-8 " Force vim to use utf-8
@@ -149,8 +134,6 @@ set signcolumn=yes
 " vim-notes config
 ":let g:notes_suffix = '.znot'
 ":let g:notes_directories = ['~/Dropbox/Notes']
-filetype plugin on
-
 
 "" Airline
 let g:airline_powerline_fonts=1
@@ -171,16 +154,6 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-" Vim
-runtime! debian.vim
-
-if has("syntax")
-  syntax on
-endif
-
-if has("autocmd")
-    filetype plugin indent on
-endif
 
 "set showcmd
 set autowrite
