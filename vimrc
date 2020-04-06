@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible
 
 "autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
