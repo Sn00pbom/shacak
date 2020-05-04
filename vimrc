@@ -28,7 +28,7 @@ let g:colorscheme_switcher_exclude_builtins=1
 
 " Compat stuff:
 set encoding=utf-8 " Force vim to use utf-8
-set hidden " for use with ctrlspace
+"set hidden " for use with ctrlspace
 set showtabline=1 " for use with ctrlspace
 
 " You complete me
