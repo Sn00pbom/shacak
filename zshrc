@@ -1,3 +1,19 @@
+DO_SPLASH=0
+
+do_splash()
+{
+    # Print splash ascii
+    input="$HOME/Documents/splash"
+    while IFS= read -r line
+    do
+      printf "$line\n"
+    done < "$input"
+}
+
+if [ $DO_SPLASH = 1 ]; then
+    do_splash
+fi
+
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -8,7 +24,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=/snap/bin:$HOME/bin:/usr/local/bin:/usr/share/swift/usr/bin:$PATH
+export PATH=$HOME/.local/bin:/snap/bin:$HOME/bin:/usr/local/bin:/usr/share/swift/usr/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/zach/.oh-my-zsh"
