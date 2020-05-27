@@ -14,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'
 Plug '~/GitHub/vim-sling'
 "Plug 'Sn00pbom/vim-sling'
+Plug 'triglav/vim-visual-increment'
 call plug#end()
 
 " General
@@ -36,20 +37,36 @@ call plug#end()
     set smarttab	" Enable smart-tabs
     set softtabstop=4	" Number of spaces per Tab
     set backspace=indent,eol,start
+    set formatoptions-=cro
+    autocmd FileType * setlocal formatoptions-=o " formatoptions-=c formatoptions-=r " disable auto comment newline
+
+" Enable mouse
+    set mouse=a
 
 " Handy Maps
     nmap <leader>gd <Plug>(coc-definition)
     nmap <leader>gr <Plug>(coc-references)
-    nnoremap <C-p> :GFiles<CR>
+    nnoremap <C-p> :FZF<CR>
     if has("nvim")
 	" Make escape work in the Neovim terminal
 	tnoremap <esc> <c-\><c-n>
     endif
 
+" Quick Tab Navigation
+    nnoremap <leader>1 1gt
+    nnoremap <leader>2 2gt
+    nnoremap <leader>3 3gt
+    nnoremap <leader>4 4gt
+    nnoremap <leader>5 5gt
+    nnoremap <leader>6 6gt
+    nnoremap <leader>7 7gt
+    nnoremap <leader>8 8gt
+    nnoremap <leader>9 9gt
+
 " Sling
     " let g:sling#sling_path="gnils.sh"
     let g:sling#edit_on_missing=1
-    noremap <F5> :Sling<CR>
+    nnoremap <F5> :Sling<CR>
 
 " Snappy updating
     set updatetime=300
