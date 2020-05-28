@@ -22,4 +22,3 @@ fi
   rm $HOME/"."$line
   ln -s $PWD"/"$line $HOME"/."$line
 done < "$input"
-
