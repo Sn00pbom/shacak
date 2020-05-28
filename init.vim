@@ -12,9 +12,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'
-Plug '~/GitHub/vim-sling'
-"Plug 'Sn00pbom/vim-sling'
+"Plug '~/source/vim-sling'
+Plug 'zalefin/vim-sling'
 Plug 'triglav/vim-visual-increment'
+Plug 'lervag/vimtex'
 call plug#end()
 
 " General
