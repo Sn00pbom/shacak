@@ -16,6 +16,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'zalefin/vim-sling'
 Plug 'triglav/vim-visual-increment'
 Plug 'lervag/vimtex'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " General
@@ -46,6 +47,8 @@ call plug#end()
 
 " Handy Maps
     nmap <leader>gd <Plug>(coc-definition)
+    nmap <leader>gy <Plug>(coc-type-definition)
+    nmap <leader>gi <Plug>(coc-implementation)
     nmap <leader>gr <Plug>(coc-references)
     nnoremap <C-p> :FZF<CR>
     if has("nvim")
@@ -70,7 +73,7 @@ call plug#end()
     nnoremap <F5> :Sling<CR>
 
 " Snappy updating
-    set updatetime=300
+    set updatetime=100
 
 " Lazy normal mode
     inoremap jk <esc>
