@@ -55,6 +55,7 @@ call plug#end()
 	" Make escape work in the Neovim terminal
 	tnoremap <esc> <c-\><c-n>
     endif
+    nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Quick Tab Navigation
     nnoremap <leader>1 1gt
@@ -73,7 +74,7 @@ call plug#end()
     nnoremap <F5> :Sling<CR>
 
 " Snappy updating
-    set updatetime=100
+    set updatetime=50
 
 " Lazy normal mode
     inoremap jk <esc>
