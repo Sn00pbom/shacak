@@ -1,5 +1,5 @@
 # Define environment variables here for login shells
-export PATH=$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export SCRIPTS=$HOME/.scripts
 
 export EDITOR="nvim"
