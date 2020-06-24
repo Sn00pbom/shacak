@@ -1,24 +1,20 @@
 #!/bin/bash
-
-# prompt user do backup
-while true; do
-    read -p "Backup current files in home dir? [Yy/Nn]" yn
+while true;
+do
+    read -p "Copy all files in $PWD/home/ to $HOME/ ? [y/n]" yn
     case $yn in
-        [Yy]* ) do_backup=1; break;;
-        [Nn]* ) do_backup=0; break;;
-        * ) echo "Please answer yes or no.";;
+	y)
+	    break
+	    ;;
+	n)
+	    exit
+	    ;;
     esac
 done
 
-# make links and copy backups
-input="./names"
-while IFS= read -r line
+cd home
+for name in $(find . -type f)
 do
-  echo "$line"
-if [ $do_backup = 1 ]
-then
-    cp $HOME/"."$line $HOME/"."$line".bak"
-fi
-  rm $HOME/"."$line
-  ln -s $PWD"/"$line $HOME"/."$line
-done < "$input"
+	echo "$name -> $HOME/$name"
+	cp --remove-destination $name "$HOME/$name"
+done
