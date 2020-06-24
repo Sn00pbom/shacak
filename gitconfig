@@ -4,4 +4,11 @@
 [push]
 	default = simple
 [core]
-	editor = vim
+	editor = nvim
+	excludesfile = /home/zach/.gitignore_global
+[diff]
+	tool = nvim -d
+[merge]
+	tool = nvim -d
+[pull]
+	rebase = false

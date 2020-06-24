@@ -1,2 +1,5 @@
+use_nerdfont = true
 [saved_state]
-volume = 80
+volume = 60
+[keybindings]
+"w" = "queue"

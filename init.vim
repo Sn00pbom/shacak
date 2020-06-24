@@ -12,8 +12,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'
-"Plug '~/source/vim-sling'
-Plug 'zalefin/vim-sling'
+Plug '~/source/vim-sling'
+"Plug 'zalefin/vim-sling'
 Plug 'triglav/vim-visual-increment'
 Plug 'lervag/vimtex'
 Plug 'preservim/nerdtree'
@@ -43,10 +43,13 @@ set formatoptions-=cro
 autocmd FileType * setlocal formatoptions-=o " formatoptions-=c formatoptions-=r " disable auto comment newline
 
 " Vimtex
-set g:vimtex_view_method = "zathura"
+let g:vimtex_view_method='zathura'
 
 " Enable mouse
 set mouse=a
+
+" Enter insert mode on terminal open automagically
+autocmd TermOpen * startinsert
 
 " Handy Maps
 nmap <leader>gd <Plug>(coc-definition)
@@ -54,12 +57,14 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-nnoremap <C-p> :FZF<CR>
+" nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :GitFiles<CR>
 if has("nvim")
     " Make escape work in the Neovim terminal
     tnoremap <esc> <c-\><c-n>
 endif
-nnoremap <C-t> :NERDTreeToggle<CR>
+" nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeFocus<CR>
 
 " Quick Tab Navigation
 nnoremap <leader>1 1gt
@@ -89,6 +94,7 @@ set termguicolors
 " colorscheme base16-atelier-lakeside
 colorscheme gruvbox
 hi Search gui=underline guifg=yellow guibg=NONE cterm=underline ctermfg=yellow ctermbg=NONE " do sicc yellow underline for searches instead of full highlight
+autocmd VimEnter * hi Normal guibg=NONE
 
 " non-retarded splitting
 set splitbelow splitright

@@ -176,7 +176,12 @@
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=33
   # Make the icon bold.
   typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='${P9K_CONTENT}'
-  typeset -g POWERLEVEL9K_LINUX_UBUNTU_ICON='\uf303'
+  #typeset -g POWERLEVEL9K_LINUX_UBUNTU_ICON='\uf303'
+  # typeset -g POWERLEVEL9K_LINUX_ARCH_ICON='\uf20b'
+  # typeset -g POWERLEVEL9K_LINUX_ARCH_ICON='\ue61f'
+  typeset -g POWERLEVEL9K_LINUX_ARCH_ICON='λ'
+  # typeset -g POWERLEVEL9K_LINUX_ARCH_ICON='\u2c96'
+
 
   ################################[ prompt_char: prompt symbol ]################################
   # Green prompt symbol if the last command succeeded.

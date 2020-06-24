@@ -2,6 +2,11 @@
 alias vim=nvim
 alias vimdiff="nvim -d"
 alias wifi="nmcli device wifi"
+alias dock="source $SCRIPTS/dock.sh"
+alias undock="source $SCRIPTS/undock.sh"
+alias mirrors="sudo reflector --verbose --protocol https --latest 200 --sort rate --save /etc/pacman.d/mirrorlist"
+alias open="xdg-open"
+# alias prntscrn="ffmpeg -f x11grab -video_size 1920x1080 -i $DISPLAY -vframes 1 screen.png"
 
 
 DO_SPLASH=0
