@@ -51,6 +51,9 @@ set mouse=a
 " Enter insert mode on terminal open automagically
 autocmd TermOpen * startinsert
 
+" Press \ then enter in insert mode to make a newline
+inoremap <leader><CR> <esc>$o
+
 " Handy Maps
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
