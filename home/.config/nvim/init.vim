@@ -99,6 +99,10 @@ colorscheme gruvbox
 hi Search gui=underline guifg=yellow guibg=NONE cterm=underline ctermfg=yellow ctermbg=NONE " do sicc yellow underline for searches instead of full highlight
 autocmd VimEnter * hi Normal guibg=NONE
 
+" Show 'invisible' characters
+set listchars=eol:¬,tab:❯=>,trail:~,extends:>,precedes:<,space:•
+set list
+
 " non-retarded splitting
 set splitbelow splitright
 
