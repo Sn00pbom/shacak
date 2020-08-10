@@ -100,7 +100,7 @@ hi Search gui=underline guifg=yellow guibg=NONE cterm=underline ctermfg=yellow c
 autocmd VimEnter * hi Normal guibg=NONE
 
 " Show 'invisible' characters
-set listchars=eol:¬,tab:❯=>,trail:~,extends:>,precedes:<,space:•
+set listchars=eol:¬,tab:❯─❯,trail:~,extends:>,precedes:<,space:•
 set list
 
 " non-retarded splitting
