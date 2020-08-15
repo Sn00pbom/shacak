@@ -29,14 +29,15 @@ set hidden
 set wrap
 set showbreak=+++
 set showmatch " Highlight matching brace
-set hlsearch
+set nohlsearch
 set smartcase
 set ignorecase
 set incsearch
 set autoindent
 set shiftwidth=4	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
-set smarttab	" Enable smart-tabs
+" set smarttab	" Enable smart-tabs
+set expandtab "expand tabs - translate them to spaces
 set softtabstop=4	" Number of spaces per Tab
 set backspace=indent,eol,start
 set formatoptions-=cro
@@ -96,7 +97,7 @@ inoremap kj <esc>
 set termguicolors
 " colorscheme base16-atelier-lakeside
 colorscheme gruvbox
-hi Search gui=underline guifg=yellow guibg=NONE cterm=underline ctermfg=yellow ctermbg=NONE " do sicc yellow underline for searches instead of full highlight
+" hi Search gui=underline guifg=yellow guibg=NONE cterm=underline ctermfg=yellow ctermbg=NONE " do sicc yellow underline for searches instead of full highlight
 autocmd VimEnter * hi Normal guibg=NONE
 
 " Show 'invisible' characters
