@@ -3,6 +3,7 @@ alias vim=nvim
 alias vimdiff="nvim -d"
 alias mirrors="sudo reflector --verbose --protocol https --latest 200 --sort rate --save /etc/pacman.d/mirrorlist"
 alias open="xdg-open"
+alias jenv="source $HOME/envs/jupyter/bin/activate"
 
 
 DO_SPLASH=0
