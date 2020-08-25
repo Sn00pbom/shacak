@@ -49,6 +49,9 @@ let g:vimtex_view_method='zathura'
 " Enable mouse
 set mouse=a
 
+" Show ruler column
+set colorcolumn=90
+
 " Enter insert mode on terminal open automagically
 autocmd TermOpen * startinsert
 
