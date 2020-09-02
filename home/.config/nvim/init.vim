@@ -17,7 +17,13 @@ Plug '~/source/vim-sling'
 Plug 'triglav/vim-visual-increment'
 Plug 'lervag/vimtex'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-sleuth'
+Plug 'tell-k/vim-autopep8'
 call plug#end()
+
+" Auto pep8 forcing
+let g:autopep8_aggressive=2
+let g:autopep8_disable_show_diff=1
 
 " General
 set nocompatible
@@ -93,8 +99,8 @@ nnoremap <F5> :Sling<CR>
 set updatetime=50
 
 " Lazy normal mode
-inoremap jk <esc>
-inoremap kj <esc>
+" inoremap jk <esc>
+" inoremap kj <esc>
 
 " Colors and such
 set termguicolors
