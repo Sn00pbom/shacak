@@ -4,6 +4,7 @@ alias vimdiff="nvim -d"
 alias mirrors="sudo reflector --verbose --protocol https --latest 200 --sort rate --save /etc/pacman.d/mirrorlist"
 alias open="xdg-open"
 alias jenv="source $HOME/envs/jupyter/bin/activate"
+alias schedule="zathura $HOME/school/now/SCHEDULE.pdf"
 
 
 DO_SPLASH=0
@@ -81,12 +82,23 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+source "$HOME/go/src/github.com/sachaos/todoist/todoist_functions_fzf.sh"
+
+# Set fzf installation directory path
+export FZF_BASE=/usr/bin/fzf
+
+# Uncomment the following line to disable fuzzy completion
+# export DISABLE_FZF_AUTO_COMPLETION="true"
+
+# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+# export DISABLE_FZF_KEY_BINDINGS="true"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fast-syntax-highlighting vi-mode)
+plugins=(git fast-syntax-highlighting vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
 
