@@ -19,7 +19,14 @@ Plug 'lervag/vimtex'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-sleuth'
 Plug 'tell-k/vim-autopep8'
+Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-easy-align'
 call plug#end()
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Auto pep8 forcing
 let g:autopep8_aggressive=2
