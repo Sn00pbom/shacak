@@ -61,6 +61,7 @@ autocmd FileType * setlocal formatoptions-=o " formatoptions-=c formatoptions-=r
 
 " Vimtex
 let g:vimtex_view_method='zathura'
+let g:tex_flavor = 'latex'
 
 " Enable mouse
 set mouse=a
@@ -168,5 +169,28 @@ endif
 " Airline
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+
+"Highlight trailing whitespace:
+highlight ExtraWhitespace ctermbg=red guibg=red
+augroup WhitespaceMatch
+	" Remove ALL autocommands for the WhitespaceMatch group.
+	autocmd!
+	autocmd BufWinEnter * let w:whitespace_match_number =
+				\ matchadd('ExtraWhitespace', '\s\+$')
+	autocmd InsertEnter * call s:ToggleWhitespaceMatch('i')
+	autocmd InsertLeave * call s:ToggleWhitespaceMatch('n')
+augroup END
+function! s:ToggleWhitespaceMatch(mode)
+	let pattern = (a:mode == 'i') ? '\s\+\%#\@<!$' : '\s\+$'
+	if exists('w:whitespace_match_number')
+		call matchdelete(w:whitespace_match_number)
+		call matchadd('ExtraWhitespace', pattern, 10, w:whitespace_match_number)
+	else
+		" Something went wrong, try to be graceful.
+		let w:whitespace_match_number =  matchadd('ExtraWhitespace', pattern)
+	endif
+endfunction
+"Press to trim trailing whitespace
+nnoremap <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 set noshowmode " Needs to be at the bottom to work for some reason
