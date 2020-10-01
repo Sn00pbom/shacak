@@ -1,3 +1,4 @@
+export _JAVA_AWT_WM_NONREPARENTING=1
 slstatus 2>&1 >/dev/null &
 xcompmgr &
 unclutter &
