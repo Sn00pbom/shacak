@@ -39,7 +39,7 @@
 
 # Examples of commands:
 
-# "xbindkeys_show" 
+# "xbindkeys_show"
 #   control+shift + q
 
 # # set directly keycode (here control + f with my keyboard)
@@ -81,6 +81,10 @@
 # Decrease brightness
 "brightnessctl set 10-"
    XF86MonBrightnessDown
+
+"flameshot full -p $HOME/Pictures/Screenshots"
+      m:0x0 + c:107
+      Print + Release
 
 ##################################
 # End of xbindkeys configuration #

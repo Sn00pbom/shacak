@@ -12,3 +12,6 @@ set incremental-search true
 # zoom
 map i zoom in
 map o zoom out
+
+map <C-i> recolor
+

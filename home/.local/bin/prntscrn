@@ -1,3 +1,0 @@
-#!/bin/bash
-# ffmpeg -f x11grab -video_size 1920x1080 -i $DISPLAY -vframes 1 screen.png
-scrot -s -e 'xclip -selection clipboard -target image/png -i $f' '/tmp/%F_%T_$wx$h.png' 

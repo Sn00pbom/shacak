@@ -3,8 +3,10 @@ alias vim=nvim
 alias vimdiff="nvim -d"
 alias mirrors="sudo reflector --verbose --protocol https --latest 200 --sort rate --save /etc/pacman.d/mirrorlist"
 alias open="xdg-open"
-alias jenv="source $HOME/envs/jupyter/bin/activate"
-alias schedule="zathura $HOME/school/now/SCHEDULE.pdf"
+alias bluetooth="sudo systemctl start bluetooth"
+alias lst="ls -lht"
+alias zathura="firejail zathura"
+
 
 
 DO_SPLASH=0
@@ -130,3 +132,4 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /usr/share/nvm/init-nvm.sh

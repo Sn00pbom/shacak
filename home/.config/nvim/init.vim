@@ -1,6 +1,7 @@
 call plug#begin()
 Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
@@ -9,7 +10,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'beeender/Comrade'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'
 Plug '~/source/vim-sling'
@@ -22,6 +25,13 @@ Plug 'tell-k/vim-autopep8'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 call plug#end()
+
+" Enable deoplete when java file
+autocmd BufRead,BufNewFile *.java call deoplete#enable()
+autocmd BufRead,BufNewFile *.java CocDisable
+
+" Open where left off
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -83,12 +93,13 @@ nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 " nnoremap <C-p> :FZF<CR>
 nnoremap <C-p> :GitFiles<CR>
+nnoremap <C-t> :Files<CR>
 if has("nvim")
     " Make escape work in the Neovim terminal
     tnoremap <esc> <c-\><c-n>
 endif
 " nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-t> :NERDTreeFocus<CR>
+" nnoremap <C-t> :NERDTreeFocus<CR>
 
 " Quick Tab Navigation
 nnoremap <leader>1 1gt
@@ -115,8 +126,15 @@ set updatetime=50
 
 " Colors and such
 set termguicolors
-" colorscheme base16-atelier-lakeside
+let g:gruvbox_contrast_dark='hard'
+
+if exists('+termguicolors')
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:gruvbox_invert_selection='0'
 colorscheme gruvbox
+set background=dark
 " hi Search gui=underline guifg=yellow guibg=NONE cterm=underline ctermfg=yellow ctermbg=NONE " do sicc yellow underline for searches instead of full highlight
 autocmd VimEnter * hi Normal guibg=NONE
 

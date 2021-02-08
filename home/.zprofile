@@ -6,6 +6,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="chromium"
 export READER="zathura"
+export TERM="tmux-256color"
 
 # export XDG_DATA_HOME="$HOME/.local/share"
 # export XDG_CONFIG_HOME="$HOME/.config"
