@@ -12,3 +12,5 @@
 	tool = nvim -d
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
