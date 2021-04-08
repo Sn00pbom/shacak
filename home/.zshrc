@@ -6,36 +6,24 @@ alias open="xdg-open"
 alias bluetooth="sudo systemctl start bluetooth"
 alias lst="ls -lht"
 alias zathura="firejail zathura"
+alias lf="lfpreview"
+alias tab="tabbed -k -c -r 2 st -w ''"
+alias oni="Oni2"
+alias svim="sudo nvim"
+alias chromium-fresh="chromium --user-data-dir=/tmp/chromium-fresh"
+alias gs="git status"
 
+export PAGER="most"
 
-
-DO_SPLASH=0
-
-do_splash()
-{
-    # Print splash ascii
-    input="$HOME/Documents/splash"
-    while IFS= read -r line
-    do
-      printf "$line\n"
-    done < "$input"
+chanmv() {
+    hashmv $(ls | grep -E "^[0-9]+\..+$")
 }
-
-if [ $DO_SPLASH = 1 ]; then
-    do_splash
-fi
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/zach/.oh-my-zsh"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="lambda-blazinggit/lambda-blazinggit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -84,7 +72,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-source "$HOME/go/src/github.com/sachaos/todoist/todoist_functions_fzf.sh"
+# source "$HOME/go/src/github.com/sachaos/todoist/todoist_functions_fzf.sh"
 
 # Set fzf installation directory path
 export FZF_BASE=/usr/bin/fzf
@@ -100,7 +88,7 @@ export FZF_BASE=/usr/bin/fzf
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fast-syntax-highlighting vi-mode fzf)
+plugins=(fast-syntax-highlighting vi-mode fzf gitstatus)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -131,5 +119,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /usr/share/nvm/init-nvm.sh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# source /usr/share/nvm/init-nvm.sh

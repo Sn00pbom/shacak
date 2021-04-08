@@ -1,5 +1,6 @@
 use_nerdfont = true
 [saved_state]
-volume = 60
+volume = 70
 [keybindings]
 "w" = "queue"
+"p" = "playpause"
