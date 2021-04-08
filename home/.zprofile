@@ -12,3 +12,7 @@ export TERM="tmux-256color"
 # export XDG_CONFIG_HOME="$HOME/.config"
 
 fortune | cowsay
+
+if [[ -z $DISPALY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    startx
+fi
