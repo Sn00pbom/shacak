@@ -9,15 +9,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if exists("comradesession")
+    " load deoplete and comrade if comrade set
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'beeender/Comrade'
+else
+    " else load CoC
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-" Plug 'beeender/Comrade'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'
-Plug '~/source/vim-sling'
-"Plug 'zalefin/vim-sling'
 Plug 'triglav/vim-visual-increment'
 Plug 'lervag/vimtex'
 " Plug 'preservim/nerdtree'
@@ -28,10 +30,9 @@ Plug 'junegunn/vim-easy-align'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
-" call deoplete#enable()
-" Enable deoplete when java file
-" autocmd BufRead,BufNewFile *.java *.scala call deoplete#enable()
-" autocmd BufRead,BufNewFile *.java *.scala CocDisable
+if exists("comradesession")
+    call deoplete#enable()
+endif
 
 " allow alpha visual increment
 set nrformats=alpha
