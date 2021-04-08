@@ -10,7 +10,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plug 'beeender/Comrade'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -19,16 +20,21 @@ Plug '~/source/vim-sling'
 "Plug 'zalefin/vim-sling'
 Plug 'triglav/vim-visual-increment'
 Plug 'lervag/vimtex'
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-sleuth'
+" Plug 'preservim/nerdtree'
+" Plug 'tpope/vim-sleuth'
 Plug 'tell-k/vim-autopep8'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
+" call deoplete#enable()
 " Enable deoplete when java file
-autocmd BufRead,BufNewFile *.java call deoplete#enable()
-autocmd BufRead,BufNewFile *.java CocDisable
+" autocmd BufRead,BufNewFile *.java *.scala call deoplete#enable()
+" autocmd BufRead,BufNewFile *.java *.scala CocDisable
+
+" allow alpha visual increment
+set nrformats=alpha
 
 " Open where left off
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -79,11 +85,18 @@ set mouse=a
 " Show ruler column
 set colorcolumn=90
 
+func! WordMode()
+    set wrap
+    set textwidth=90
+    set spell spelllang=en_us
+endfunction
+com! WordMode call WordMode()
+
 " Enter insert mode on terminal open automagically
 autocmd TermOpen * startinsert
 
 " Press \ then enter in insert mode to make a newline
-inoremap <leader><CR> <esc>$o
+" inoremap <leader><CR> <esc>$o
 
 " Handy Maps
 nmap <leader>gd <Plug>(coc-definition)
@@ -91,9 +104,14 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-" nnoremap <C-p> :FZF<CR>
-nnoremap <C-p> :GitFiles<CR>
-nnoremap <C-t> :Files<CR>
+if system('isgit') == 0
+    " in git repo
+    nnoremap <C-p> :GitFiles<CR>
+else
+    " not in git repo
+    nnoremap <C-p> :Files<CR>
+endif
+
 if has("nvim")
     " Make escape work in the Neovim terminal
     tnoremap <esc> <c-\><c-n>
@@ -136,7 +154,9 @@ let g:gruvbox_invert_selection='0'
 colorscheme gruvbox
 set background=dark
 " hi Search gui=underline guifg=yellow guibg=NONE cterm=underline ctermfg=yellow ctermbg=NONE " do sicc yellow underline for searches instead of full highlight
-autocmd VimEnter * hi Normal guibg=NONE
+if !exists('g:started_by_firenvim')
+    autocmd VimEnter * hi Normal guibg=NONE
+endif
 
 " Show 'invisible' characters
 set listchars=eol:¬,tab:❯─❯,trail:~,extends:>,precedes:<,space:•
@@ -210,5 +230,33 @@ function! s:ToggleWhitespaceMatch(mode)
 endfunction
 "Press to trim trailing whitespace
 nnoremap <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" FireNVim
+let g:firenvim_config = {
+			\ 'globalSettings': {
+			\ 'alt': 'all',
+			\  },
+			\ 'localSettings': {
+			\ '.*': {
+			\ 'cmdline': 'neovim',
+			\ 'priority': 0,
+			\ 'selector': 'textarea',
+			\ 'takeover': 'never',
+			\ },
+			\ }
+			\ }
+if exists('g:started_by_firenvim')
+    " set background=light
+
+    colorscheme base16-monokai
+    set nolist
+
+    " au BufEnter localhost_*ipynb* set filetype=python
+    au BufEnter localhost_*ipynb* set filetype=python
+    au BufEnter localhost* set guifont=Sauce Code Pro Nerd Font:h10
+    au BufEnter localhost* hi! link markdownItalic Normal
+    " nnoremap <F7> :set filetype=markdown<CR>
+    " nnoremap <F8> :set filetype=tex<CR>
+endif
 
 set noshowmode " Needs to be at the bottom to work for some reason
