@@ -14,10 +14,9 @@ flameshot &
 nm-applet &
 pa-applet &
 blueman-applet &
-xwallpaper --zoom "$HOME/Pictures/chromecast-papes/00674.jpg"
+numlockx &
+xwallpaper --zoom $HOME/Pictures/wallpapers/1614304221426.png
 xautolock -time 5 -locker slock 2>&1 >/dev/null &
-mon
 xset r rate 300 40
 xbindkeys
-source $SCRIPTS/xtouchclick.sh
 exec dbus-launch dwm
