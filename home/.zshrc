@@ -11,13 +11,38 @@ alias lf="lfpreview"
 alias tab="tabbed -k -c -r 2 st -w ''"
 alias oni="Oni2"
 alias svim="sudo nvim"
-alias chromium-fresh="chromium --user-data-dir=/tmp/chromium-fresh"
 alias gs="git status"
+alias glog="git log --graph"
+alias youtube-dl-mp3="youtube-dl --extract-audio --audio-format mp3"
 
 export PAGER="most"
 
 chanmv() {
     hashmv $(ls | grep -E "^[0-9]+\..+$")
+}
+
+chromium-fresh() {
+    rm -rf /tmp/chromium-fresh
+    chromium --user-data-dir=/tmp/chromium-fresh $@
+}
+
+mpv-remote() {
+    # start mpv remote control server and run mpv on file
+    source ~/envs/mpvremote/bin/activate
+    mpv-remote-app wewlad &
+    mpv --input-ipc-server=/tmp/mpvsocket $@
+    kill %mpv-remote-app
+    deactivate
+}
+
+mon() {
+    xrandr --output HDMI-1 --auto
+    xrandr --output eDP-1 --off
+}
+
+unmon() {
+    xrandr --output HDMI-1 --off
+    xrandr --output eDP-1 --auto
 }
 
 # Path to your oh-my-zsh installation.
@@ -77,6 +102,7 @@ ZSH_THEME="lambda-blazinggit/lambda-blazinggit"
 
 # Set fzf installation directory path
 export FZF_BASE=/usr/bin/fzf
+# export FZF_COMPLETION_OPTS='--border --info=inline --preview "git show --color=always {} | head -"'
 
 # Uncomment the following line to disable fuzzy completion
 # export DISABLE_FZF_AUTO_COMPLETION="true"

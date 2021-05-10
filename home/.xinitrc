@@ -16,6 +16,7 @@ pa-applet &
 blueman-applet &
 numlockx &
 xwallpaper --zoom $HOME/Pictures/wallpapers/1614304221426.png
+#xwallpaper --tile /home/zach/Pictures/33116a610d0507633261d49a71e40d866749a3ab.png
 xautolock -time 5 -locker slock 2>&1 >/dev/null &
 xset r rate 300 40
 xbindkeys

@@ -28,6 +28,7 @@ Plug 'tell-k/vim-autopep8'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 if exists("comradesession")
