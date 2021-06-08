@@ -7,6 +7,8 @@ export TERMINAL="st"
 export BROWSER="chromium"
 export READER="zathura"
 export TERM="tmux-256color"
+export LESS="--mouse"
+export PAGER="less"
 
 # export XDG_DATA_HOME="$HOME/.local/share"
 # export XDG_CONFIG_HOME="$HOME/.config"
@@ -16,3 +18,4 @@ fortune | cowsay
 if [[ -z $DISPALY ]] && [[ $(tty) = /dev/tty1 ]]; then
     startx
 fi
+

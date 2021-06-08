@@ -14,8 +14,8 @@ alias svim="sudo nvim"
 alias gs="git status"
 alias glog="git log --graph"
 alias youtube-dl-mp3="youtube-dl --extract-audio --audio-format mp3"
+alias lswebcam="v4l2-ctl --list-devices"
 
-export PAGER="most"
 
 chanmv() {
     hashmv $(ls | grep -E "^[0-9]+\..+$")
@@ -36,19 +36,28 @@ mpv-remote() {
 }
 
 mon() {
-    xrandr --output HDMI-1 --auto
-    xrandr --output eDP-1 --off
+    xrandr --output HDMI1 --auto
+    xrandr --output eDP1 --off
+    # set audio output to HDMI
+    pactl set-card-profile alsa_card.pci-0000_00_1f.3 output:hdmi-stereo
 }
 
 unmon() {
-    xrandr --output HDMI-1 --off
-    xrandr --output eDP-1 --auto
+    xrandr --output HDMI1 --off
+    xrandr --output eDP1 --auto
+    # set audio output to analog
+    pactl set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo
+}
+
+movie() {
+    pkill -f slock
+    xset s off -dpms
+    mon
 }
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/zach/.oh-my-zsh"
 
-# ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_THEME="lambda-blazinggit/lambda-blazinggit"
 
 # Uncomment the following line to use case-sensitive completion.
