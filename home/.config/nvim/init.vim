@@ -14,8 +14,7 @@ if exists("comradesession")
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'beeender/Comrade'
 else
-    " else load CoC
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " else
 endif
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'junegunn/fzf.vim'
@@ -24,11 +23,14 @@ Plug 'triglav/vim-visual-increment'
 Plug 'lervag/vimtex'
 " Plug 'preservim/nerdtree'
 " Plug 'tpope/vim-sleuth'
-Plug 'tell-k/vim-autopep8'
+" Plug 'tell-k/vim-autopep8'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.0' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 if exists("comradesession")
@@ -69,9 +71,10 @@ set ignorecase
 set incsearch
 set autoindent
 set shiftwidth=4	" Number of auto-indent spaces
-set smartindent	" Enable smart-indent
+" set smartindent	" Enable smart-indent
 " set smarttab	" Enable smart-tabs
 set expandtab "expand tabs - translate them to spaces
+set tabstop=4
 set softtabstop=4	" Number of spaces per Tab
 set backspace=indent,eol,start
 set formatoptions-=cro
@@ -79,7 +82,8 @@ autocmd FileType * setlocal formatoptions-=o " formatoptions-=c formatoptions-=r
 
 " Vimtex
 let g:vimtex_view_method='zathura'
-let g:tex_flavor = 'latex'
+let g:tex_flavor = 'xelatex'
+
 
 " Enable mouse
 set mouse=a
@@ -179,32 +183,6 @@ set cmdheight=2
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-	    \ pumvisible() ? "\<C-n>" :
-	    \ <SID>check_back_space() ? "\<TAB>" :
-	    \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
 
 " Airline
 let g:airline_powerline_fonts=1
