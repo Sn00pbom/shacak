@@ -4,9 +4,7 @@ alias comrade="nvim --cmd 'let comradesession=1'"
 alias vimdiff="nvim -d"
 alias mirrors="sudo reflector --verbose --protocol https --latest 200 --sort rate --save /etc/pacman.d/mirrorlist"
 alias open="xdg-open"
-alias bluetooth="sudo systemctl start bluetooth"
 alias lst="ls -lht"
-alias zathura="firejail zathura"
 alias lf="lfpreview"
 alias tab="tabbed -k -c -r 2 st -w ''"
 alias oni="Oni2"
@@ -15,15 +13,30 @@ alias gs="git status"
 alias glog="git log --graph"
 alias youtube-dl-mp3="youtube-dl --extract-audio --audio-format mp3"
 alias lswebcam="v4l2-ctl --list-devices"
+alias java17="/usr/lib/jvm/java-17-openjdk/bin/java"
+
+pdftab() {
+    if [ -z $TABBED ]
+    then
+        export TABBED=$(tabbed -t "#b85ae8" -k -c -d)
+        st -w $TABBED & disown
+        IS_PARENT=1
+    fi
+
+    for f in $@
+    do
+        zathura "$f" -e $TABBED & disown
+    done
+
+    if [ $IS_PARENT ]
+    then
+        export TABBED=""
+    fi
+}
 
 
 chanmv() {
     hashmv $(ls | grep -E "^[0-9]+\..+$")
-}
-
-chromium-fresh() {
-    rm -rf /tmp/chromium-fresh
-    chromium --user-data-dir=/tmp/chromium-fresh $@
 }
 
 mpv-remote() {
@@ -52,7 +65,6 @@ unmon() {
 movie() {
     pkill -f slock
     xset s off -dpms
-    mon
 }
 
 # Path to your oh-my-zsh installation.
@@ -157,3 +169,4 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # source /usr/share/nvm/init-nvm.sh
+
