@@ -145,6 +145,7 @@ else
     " not in git repo
     nnoremap <C-p> :Files<CR>
 endif
+nnoremap <C-b> :Buffers<CR>
 
 if has("nvim")
     " Make escape work in the Neovim terminal
